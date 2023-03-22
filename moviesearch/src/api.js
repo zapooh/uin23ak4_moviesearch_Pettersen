@@ -5,3 +5,9 @@ export async function searchMovies(searchTerm) {
   const data = await response.json();
   return data.Search;
 }
+
+export async function fetchJamesBondMovies() {
+  const response = await fetch(`https://www.omdbapi.com/?s=James%20Bond&apikey=${API_KEY}`);
+  const data = await response.json();
+  return data.Search.slice(0, 10);
+}

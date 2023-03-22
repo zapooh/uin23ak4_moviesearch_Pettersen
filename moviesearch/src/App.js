@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import './App.scss';
-import { searchMovies } from './api';
+import { searchMovies, fetchJamesBondMovies } from './api';
+import MovieSearch from './MovieSearch';
 import SearchResults from './SearchResults';
 
 function App() {
   const [movies, setMovies] = useState([]);
 
-  useEffect(() => {
-    async function fetchMovies() {
-      const results = await searchMovies('James Bond');
-      setMovies(results.slice(0, 10));
+  const handleSearch = useCallback(async (searchTerm) => {
+    if (searchTerm.trim() === '') {
+      return;
     }
+    const results = await searchMovies(searchTerm);
+    setMovies(results);
+  }, []);
 
-    fetchMovies();
+  useEffect(() => {
+    async function loadJamesBondMovies() {
+      const bondMovies = await fetchJamesBondMovies();
+      setMovies(bondMovies);
+    }
+    loadJamesBondMovies();
   }, []);
 
   return (
     <div className="App">
       <h1>Filmsøk</h1>
+      <MovieSearch onSearch={handleSearch} />
       <SearchResults movies={movies} />
     </div>
   );
