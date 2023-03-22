@@ -29,9 +29,11 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <header>
         <Link to="/" onClick={loadJamesBondMovies}>
-          <h1>Filmsøk</h1>
+          <h1 className="header">Filmsøk</h1>
         </Link>
+        </header>
         <Routes>
           <Route path="/" element={<><MovieSearch onSearch={handleSearch} /><SearchResults movies={movies} /></>} />
           <Route path="/movie/:id" element={<MovieDetails />} />
