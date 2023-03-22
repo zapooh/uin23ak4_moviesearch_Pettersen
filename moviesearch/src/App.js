@@ -15,17 +15,20 @@ function App() {
     setMovies(results);
   }, []);
 
-  useEffect(() => {
-    async function loadJamesBondMovies() {
-      const bondMovies = await fetchJamesBondMovies();
-      setMovies(bondMovies);
-    }
-    loadJamesBondMovies();
+  const loadJamesBondMovies = useCallback(async () => {
+    const bondMovies = await fetchJamesBondMovies();
+    setMovies(bondMovies);
   }, []);
+
+  useEffect(() => {
+    loadJamesBondMovies();
+  }, [loadJamesBondMovies]);
 
   return (
     <div className="App">
-      <h1>Filmsøk</h1>
+      <h1 onClick={loadJamesBondMovies} style={{ cursor: 'pointer' }}>
+        Movie Search
+      </h1>
       <MovieSearch onSearch={handleSearch} />
       <SearchResults movies={movies} />
     </div>

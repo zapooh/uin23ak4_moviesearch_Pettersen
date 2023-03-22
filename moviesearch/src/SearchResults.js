@@ -3,7 +3,7 @@ import MovieCard from './MovieCard';
 
 const SearchResults = ({ movies }) => {
   return (
-    <div className="search-results">
+    <div className="movie-grid">
       {movies.map((movie) => (
         <MovieCard key={movie.imdbID} movie={movie} />
       ))}

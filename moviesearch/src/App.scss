@@ -37,4 +37,33 @@
   }
 }
 
+.App {
+  text-align: center;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  justify-items: center;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 16px;
+}
+
+.App {
+  text-align: center;
+}
+
+
+h1 {
+  cursor: pointer;
+  &:hover {
+    color: #0070b8;
+    text-decoration: underline;
+  }
+}
+
+
+
 
