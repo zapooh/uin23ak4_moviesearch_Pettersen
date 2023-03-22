@@ -1,8 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import './App.scss';
 import { searchMovies, fetchJamesBondMovies } from './api';
 import MovieSearch from './MovieSearch';
 import SearchResults from './SearchResults';
+import MovieDetails from './MovieDetails';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -25,13 +27,17 @@ function App() {
   }, [loadJamesBondMovies]);
 
   return (
-    <div className="App">
-      <h1 onClick={loadJamesBondMovies}>
-        Filmsøk
-      </h1>
-      <MovieSearch onSearch={handleSearch} />
-      <SearchResults movies={movies} />
-    </div>
+    <Router>
+      <div className="App">
+        <Link to="/" onClick={loadJamesBondMovies}>
+          <h1>Filmsøk</h1>
+        </Link>
+        <Routes>
+          <Route path="/" element={<><MovieSearch onSearch={handleSearch} /><SearchResults movies={movies} /></>} />
+          <Route path="/movie/:id" element={<MovieDetails />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

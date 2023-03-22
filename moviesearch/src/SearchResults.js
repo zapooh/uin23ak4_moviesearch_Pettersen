@@ -1,6 +1,8 @@
 import React from 'react';
 import MovieCard from './MovieCard';
 
+
+
 const SearchResults = ({ movies }) => {
   return (
     <div className="movie-grid">

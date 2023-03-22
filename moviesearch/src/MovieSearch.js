@@ -12,11 +12,11 @@ const MovieSearch = ({ onSearch }) => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Search for a movie"
+        placeholder="Søk etter film"
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
       />
-      <button type="submit">Search</button>
+      <button type="submit">Søk</button>
     </form>
   );
 };
