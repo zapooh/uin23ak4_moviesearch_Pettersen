@@ -26,8 +26,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1 onClick={loadJamesBondMovies} style={{ cursor: 'pointer' }}>
-        Movie Search
+      <h1 onClick={loadJamesBondMovies}>
+        Filmsøk
       </h1>
       <MovieSearch onSearch={handleSearch} />
       <SearchResults movies={movies} />
