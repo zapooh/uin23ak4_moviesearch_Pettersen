@@ -10,7 +10,7 @@ function App() {
   const [movies, setMovies] = useState([]);
 
   const handleSearch = useCallback(async (searchTerm) => {
-    if (searchTerm.trim() === '') {
+    if (searchTerm.trim().length < 3) {
       return;
     }
     const results = await searchMovies(searchTerm);
